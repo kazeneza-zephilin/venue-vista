@@ -21,7 +21,9 @@ const getCategoryByName = async (name: string) => {
   return Category.findOne({ name: { $regex: name, $options: "i" } });
 };
 
-const populateEvent = (query: unknown) => {
+import DocumentQuery from "mongoose";
+
+const populateEvent = (query: DocumentQuery<any, any>) => {
   return query
     .populate({
       path: "organizer",
