@@ -22,9 +22,9 @@ const getCategoryByName = async (name: string) => {
   return Category.findOne({ name: { $regex: name, $options: "i" } });
 };
 
-import { Query, Document } from "mongoose";
+import { Query } from "mongoose";
 
-const populateEvent = (query: Query<Document<any, any>, Document<any, any>>) => {
+const populateEvent = (query: Query<any, any>) => {
   return query
     .populate({
       path: "organizer",
