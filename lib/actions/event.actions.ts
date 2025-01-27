@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
 import { revalidatePath } from "next/cache";
@@ -21,9 +22,9 @@ const getCategoryByName = async (name: string) => {
   return Category.findOne({ name: { $regex: name, $options: "i" } });
 };
 
-import DocumentQuery from "mongoose";
+import { Query, Document } from "mongoose";
 
-const populateEvent = (query: DocumentQuery<any, any>) => {
+const populateEvent = (query: Query<Document<any, any>, Document<any, any>>) => {
   return query
     .populate({
       path: "organizer",
